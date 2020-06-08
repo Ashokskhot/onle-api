@@ -20,6 +20,9 @@ module.exports = function(app) {
   app.route('/auth/student_sign_in')
       .post(userHandlers.student_sign_in);
 
+  app.route('/user/:userId')
+      .put(userHandlers.updateById);
+
   app.route('/auth/forgot_password')
     .get(userHandlers.render_forgot_password_template)
     .post(userHandlers.forgot_password);
