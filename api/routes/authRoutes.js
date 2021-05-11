@@ -20,7 +20,7 @@ module.exports = function(app) {
   app.route('/auth/student_sign_in')
       .post(userHandlers.student_sign_in);
 
-  app.route('/user/:userId')
+  app.route('/user')
       .put(userHandlers.updateById);
 
   app.route('/auth/forgot_password')

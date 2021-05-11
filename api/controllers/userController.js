@@ -73,7 +73,7 @@ exports.render_reset_password_template = function(req, res) {
 exports.sign_in = function(req, res) {
   User.findOne({
     email: req.body.email,
-    role: 'Teacher'
+    role: req.body.role
   }, function(err, user) {
     if (err) throw err;
     if (!user || !user.comparePassword(req.body.password)) {
@@ -84,7 +84,7 @@ exports.sign_in = function(req, res) {
 };
 
 exports.updateById = function(req, res, next) {
-  User.findByIdAndUpdate(req.params.userId,{email: req.body.email, fullName: req.body.fullName, class_name:req.body.class_name, section_name: req.body.section_name}, function(err, classNameInfo){
+  User.findByIdAndUpdate(req.body.id,{email: req.body.email, fullName: req.body.fullName, class_name:req.body.class_name, section_name: req.body.section_name}, function(err, classNameInfo){
 
     if(err)
       next(err);
